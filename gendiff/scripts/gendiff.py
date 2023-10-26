@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-import argparse
+
+from gendiff.cli_parse import make_cli_parse
+from gendiff import generate_diff
 
 
 def main():
-	parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.')
-	parser.add_argument('first_file', type=str)
-	parser.add_argument('second_file', type=str)
-	parser.add_argument('-f', '--format', type=str, help='set format of output')
-	args = parser.parse_args()
+    file1_path, file2_path = make_cli_parse()
+    diff = generate_diff(file1_path, file2_path)
+    print(diff)
 
 
 if __name__ == '__main__':
-	main()
+    main()
