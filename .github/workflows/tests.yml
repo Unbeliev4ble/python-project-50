@@ -1,12 +1,28 @@
-name: tests check
+name: tests and linter check
 
 on: push
 
 jobs:
   testing:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10] # we want to test our package on several versions of Python
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Pytest project check
-        run: poetry run pytest
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies  # make depends on poetry
+        run: |
+          pip install poetry
+          make install
+
+      - name: Pytest and linter project check
+        run: |
+          make lint
+          make test
