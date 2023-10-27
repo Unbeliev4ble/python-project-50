@@ -1,8 +1,14 @@
 from gendiff import generate_diff
 
 
-file1 = '/home/frost/projects/file1.json'
-file2 = '/home/frost/projects/file2.json'
+# file1_path = '/home/frost/projects/file1.json'  # файлы локальные на ПК - РАБОТАЕТ
+# file2_path = '/home/frost/projects/file2.json'
+
+file1_path = 'fixtures/file1.json'
+file2_path = 'fixtures/file2.json'
+# # expected_result = open('fixtures/flat_json_comparing.txt').read()
+
+
 expected_result = ("{"
                    "\n- follow: False"
                    "\n  host: hexlet.io"
@@ -13,5 +19,6 @@ expected_result = ("{"
                    "\n}")
 
 
+
 def test_generate_diff():
-    assert generate_diff(file1, file2) == expected_result
+    assert generate_diff(file1_path, file2_path) == expected_result

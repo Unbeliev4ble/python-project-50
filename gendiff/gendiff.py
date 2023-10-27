@@ -1,9 +1,15 @@
 import json
 
 
-def generate_diff(file1_path, file2_path):
-    file1 = json.load(open(file1_path))
-    file2 = json.load(open(file2_path))
+def get_data(file_path: str) -> dict:
+    return json.load(open(file_path))
+
+
+def generate_diff(file1_path: str, file2_path: str) -> str:
+
+    file1 = get_data(file1_path)
+    file2 = get_data(file2_path)
+
     diff_string = '{\n'
     for key in sorted(file1 | file2):
         if key in file1 and key in file2:
@@ -23,6 +29,8 @@ def generate_diff(file1_path, file2_path):
     return diff_string
 
 
-# file1 = '/home/frost/projects/file1.json'
-# file2 = '/home/frost/projects/file2.json'
+
+# file1 = 'tests/fixtures/file1.json'   # проверка работоспособности функции с тестовыми файлами из проекта (РАБОТАЕТ)
+# file2 = 'tests/fixtures/file2.json'
+#
 # print(generate_diff(file1, file2))
