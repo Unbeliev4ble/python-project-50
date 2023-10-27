@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8, 3.9, 3.10] # we want to test our package on several versions of Python
+        python-version: [3.8, 3.9, '3.10'] # we want to test our package on several versions of Python
 
     steps:
       - uses: actions/checkout@v4
