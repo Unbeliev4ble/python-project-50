@@ -1,0 +1,12 @@
+name: tests check
+
+on: push
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pytest project check
+        run: make test

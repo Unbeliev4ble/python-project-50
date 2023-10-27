@@ -15,3 +15,6 @@ lint:
 
 compare:
 	gendiff /home/frost/projects/file1.json /home/frost/projects/file2.json
+
+test:
+	poetry run pytest
