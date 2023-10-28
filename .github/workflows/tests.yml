@@ -34,6 +34,6 @@ jobs:
         uses: paambaati/codeclimate-action@v5.0.0
         if: github.ref_name == 'main'
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.b74b915a7272e6f600a74cc43879eead94a406b81ee1989f7e8916e92a440dc6 }}
+          CC_TEST_REPORTER_ID: ${{ secrets.0d324884e3f9c1305fe74445a5e30058beb6440423bcc946fd091a5c24658bee }}
         with:
-          coverageCommand: make test
+          coverageCommand: make test-coverage
