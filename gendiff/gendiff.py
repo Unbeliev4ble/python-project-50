@@ -27,5 +27,6 @@ def generate_diff(file1_path: str, file2_path: str) -> str:
         diff_string += '\n'
     diff_string += '}'
     return diff_string
+
 # file1 = 'tests/fixtures/file1.json'   # проверка
 # file2 = 'tests/fixtures/file2.json'

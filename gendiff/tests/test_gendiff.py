@@ -4,8 +4,8 @@ from gendiff import generate_diff
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# file1 = 'fixtures/file1.json' # относ. путь работает только в ране модуля
-# file2 = 'fixtures/file2.json'
+# file1_path = 'fixtures/file1.json' # относ. путь работает только в ране модуля
+# file2_path = 'fixtures/file2.json'
 
 file1_path = f'{current_dir}/fixtures/file1.json'
 file2_path = f'{current_dir}/fixtures/file2.json'
