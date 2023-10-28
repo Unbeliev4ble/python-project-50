@@ -36,4 +36,4 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.b74b915a7272e6f600a74cc43879eead94a406b81ee1989f7e8916e92a440dc6 }}
         with:
-          coverageCommand: make test-coverage
+          coverageCommand: make test
