@@ -20,8 +20,10 @@ expected_result = open('./fixtures/comparing_result.txt').read()
 
 
 def test_generate_diff_json():
-    assert generate_diff_func(file1_path_json, file2_path_json) == expected_result
+    assert generate_diff_func(file1_path_json, file2_path_json) \
+           == expected_result
 
 
 def test_generate_diff_yaml():
-    assert generate_diff_func(file1_path_yaml, file2_path_yaml) == expected_result
+    assert generate_diff_func(file1_path_yaml, file2_path_yaml) \
+           == expected_result

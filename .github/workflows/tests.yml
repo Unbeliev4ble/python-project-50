@@ -27,8 +27,11 @@ jobs:
 
       - name: Pytest and linter project check
         run: |
-          make lint
-          make test
+          poetry run flake8 gendiff_app
+          cd ./gendiff_app/tests
+          poetry run pytest
+#          make lint
+#          make test
 
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
