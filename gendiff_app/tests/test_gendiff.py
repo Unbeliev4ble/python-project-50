@@ -1,5 +1,5 @@
 import os
-from gendiff.generate_diff import generate_diff
+from gendiff_app.scripts.generate_diff import generate_diff_func
 
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -14,8 +14,8 @@ expected_result = open(f'{current_dir}/fixtures/comparing_result.txt').read()
 
 
 def test_generate_diff_json():
-    assert generate_diff(file1_path_json, file2_path_json) == expected_result
+    assert generate_diff_func(file1_path_json, file2_path_json) == expected_result
 
 
 def test_generate_diff_yaml():
-    assert generate_diff(file1_path_yaml, file2_path_yaml) == expected_result
+    assert generate_diff_func(file1_path_yaml, file2_path_yaml) == expected_result

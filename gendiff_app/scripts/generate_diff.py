@@ -1,7 +1,18 @@
-from gendiff import parse_files
+from pathlib import Path
+
+from gendiff_app.scripts import parse_files
 
 
-def generate_diff(file1_path: str, file2_path: str) -> str:
+# file1 = 'tests/fixtures/file1.json'   # проверка json
+# file2 = 'tests/fixtures/file2.json'
+
+file1 = '../tests/fixtures/file1_1.yaml'  # проверка yaml
+file2 = '../tests/fixtures/file2_2.yaml'
+
+
+def generate_diff_func(file1_path: str, file2_path: str) -> str:
+
+    print(Path.cwd())
 
     data1 = parse_files.get_data(file1_path)
     data2 = parse_files.get_data(file2_path)
@@ -24,10 +35,4 @@ def generate_diff(file1_path: str, file2_path: str) -> str:
     diff_string += '}'
     return diff_string
 
-# file1 = 'tests/fixtures/file1.json'   # проверка json
-# file2 = 'tests/fixtures/file2.json'
-# # #
-# file1 = 'tests/fixtures/file1.yaml'   # проверка yaml
-# file2 = 'tests/fixtures/file2.yaml'
-# # # #
-# print(generate_diff(file1, file2))
+# print(generate_diff_func(file1, file2))
