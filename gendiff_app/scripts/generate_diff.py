@@ -6,8 +6,8 @@ from gendiff_app.scripts import parse_files
 # file1 = 'tests/fixtures/file1.json'   # проверка json
 # file2 = 'tests/fixtures/file2.json'
 
-file1 = '../tests/fixtures/file1_1.yaml'  # проверка yaml
-file2 = '../tests/fixtures/file2_2.yaml'
+file1 = '../tests/fixtures/file1.yaml'  # проверка yaml
+file2 = '../tests/fixtures/file2.yaml'
 
 
 def generate_diff_func(file1_path: str, file2_path: str) -> str:

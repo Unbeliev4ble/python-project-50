@@ -2,8 +2,8 @@
 
 from gendiff_app.scripts import generate_diff
 
-file1 = './tests/fixtures/file1_1.yaml'
-file2 = './tests/fixtures/file2_2.yaml'
+file1 = './tests/fixtures/file1.yaml'
+file2 = './tests/fixtures/file2.yaml'
 
 
 def main():
