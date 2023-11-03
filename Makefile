@@ -14,10 +14,10 @@ lint:
 	poetry run flake8 gendiff_app
 
 compare:
-	gendiff /home/frost/projects/file1.json /home/frost/projects/file2.json
+	gendiff_app /home/frost/projects/file1.json /home/frost/projects/file2.json
 
 test:
-	poetry run pytest
+	cd gendiff_app/tests && poetry run pytest
 
 test-coverage:
-	poetry run pytest --cov=gendiff  --cov-report xml
+	poetry run pytest --cov=gendiff_app  --cov-report xml
