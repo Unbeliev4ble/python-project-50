@@ -20,4 +20,4 @@ test:
 	cd gendiff_app/tests && poetry run pytest
 
 test-coverage:
-	poetry run pytest --cov=gendiff_app  --cov-report xml
+	cd gendiff_app/tests && poetry run pytest --cov=./ --cov-report xml && ls -lah
