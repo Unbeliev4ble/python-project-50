@@ -5,7 +5,7 @@ description = ""
 authors = ["Andrey Volkov <andrew.unbelievable@yandex.ru>"]
 readme = "README.md"
 packages = [
-    {include = "gendiff"},
+    {include = "gendiff_app"},
 ]
 
 [tool.poetry.scripts]

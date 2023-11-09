@@ -11,13 +11,13 @@ package-install:
 	python3 -m pip install --user --force-reinstall dist/*.whl
 
 lint:
-	poetry run flake8 gendiff
+	poetry run flake8 gendiff_app
 
 compare:
-	gendiff /home/frost/projects/file1.json /home/frost/projects/file2.json
+	gendiff_app /home/frost/projects/file1.json /home/frost/projects/file2.json
 
 test:
-	poetry run pytest
+	cd gendiff_app/tests && poetry run pytest
 
 test-coverage:
-	poetry run pytest --cov=gendiff  --cov-report xml
+	cd gendiff_app/tests && poetry run pytest --cov=./ --cov-report xml && ls -lah
