@@ -22,5 +22,3 @@ test:
 test-coverage:
 	cd gendiff/tests &&	poetry run pytest --cov=gendiff  --cov-report xml
 
-compare_json_yaml:
-	gendiff -f stylish /home/frost/projects/python-project-50/gendiff/tests/fixtures/file1_nested.json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file2_nested.yaml
