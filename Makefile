@@ -17,7 +17,10 @@ compare:
 	gendiff /home/frost/projects/file1.json /home/frost/projects/file2.json
 
 test:
-	poetry run pytest
+	cd gendiff/tests && poetry run pytest
 
 test-coverage:
 	poetry run pytest --cov=gendiff  --cov-report xml
+
+compare_json_yaml:
+	gendiff -f stylish /home/frost/projects/python-project-50/gendiff/tests/fixtures/file1_nested.json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file2_nested.yaml
