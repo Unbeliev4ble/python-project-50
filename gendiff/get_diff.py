@@ -14,5 +14,3 @@ def get_diff(data1: dict, data2: dict) -> dict: # noqa
             diff_dict[f'- {key}'] = data1[key]
             diff_dict[f'+ {key}'] = data2[key]
     return diff_dict
-
-

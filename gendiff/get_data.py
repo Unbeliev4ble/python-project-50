@@ -7,4 +7,3 @@ def get_data(file_path: str) -> dict:
         return json.load(open(file_path))
     elif file_path.endswith(('.yaml', '.yml')):
         return yaml.safe_load(open(file_path))
-
