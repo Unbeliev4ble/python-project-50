@@ -21,5 +21,5 @@ test:
 
 test-coverage:
 	cd gendiff/tests
-	poetry run pytest --cov=./gendiff  --cov-report xml
+	poetry run pytest --cov=gendiff  --cov-report xml
 
