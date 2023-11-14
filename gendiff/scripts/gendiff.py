@@ -6,8 +6,8 @@ from gendiff.gen_diff import generate_diff
 
 def main():
     file1_path, file2_path, format = make_cli_parse()
-    diff = generate_diff(file1_path, file2_path, format='stylish')
-    print(diff)
+    diff = generate_diff(file1_path, file2_path, format)
+    return print(diff)
 
 
 if __name__ == '__main__':

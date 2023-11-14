@@ -6,5 +6,8 @@
 ### Asciinema demonstarations: 
 1. Comparing plain.json files
 [![asciicast](https://asciinema.org/a/d2ltyMMZVjHWAvyvNdsdU3Rnv.svg)](https://asciinema.org/a/d2ltyMMZVjHWAvyvNdsdU3Rnv)
-2. Comparing nested.json and .yaml files
+2. Comparing nested.json and .yaml files. Stylish output format.
 [![asciicast](https://asciinema.org/a/MgjmJibyu464GkGnSdxCmQuT4.svg)](https://asciinema.org/a/MgjmJibyu464GkGnSdxCmQuT4)
+3. Comparing nested.json files. 
+Plain output format.
+[![asciicast](https://asciinema.org/a/dkMsdK3bsLTXyIhXVRBeqptUx.svg)](https://asciinema.org/a/dkMsdK3bsLTXyIhXVRBeqptUx)

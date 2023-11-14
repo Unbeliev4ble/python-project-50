@@ -14,7 +14,10 @@ lint:
 	poetry run flake8 gendiff
 
 compare:
-	gendiff /home/frost/projects/file1.json /home/frost/projects/file2.json
+	poetry run gendiff /home/frost/projects/python-project-50/gendiff/tests/fixtures/file1_nested.json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file2_nested.json
+
+compare-plain:
+	poetry run gendiff -f plain /home/frost/projects/python-project-50/gendiff/tests/fixtures/file1_nested.json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file2_nested.json
 
 test:
 	cd gendiff/tests && poetry run pytest

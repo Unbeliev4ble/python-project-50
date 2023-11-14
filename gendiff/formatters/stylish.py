@@ -1,23 +1,16 @@
 import itertools
+from gendiff.formatters.value_foramatters import format_value_stylish
 
 
 PREFIXES = ('+ ', '- ', '  ')
 PREFIX_LENGTH = 2
 
 
-def get_str(value):
-    if value is None:
-        return 'null'
-    elif isinstance(value, bool):
-        return str(value).lower()
-    return str(value)
-
-
 def make_stylish(dict_to_style, replacer=' ', spaces_count=4):
 
     def walk(data, depth=0):
         if not isinstance(data, dict):
-            return get_str(data)
+            return format_value_stylish(data)
         indent_size = depth + spaces_count
         indent = replacer * indent_size
         ident_for_changed = replacer * (indent_size - PREFIX_LENGTH)
