@@ -1,7 +1,7 @@
 import argparse
 
 
-def make_cli_parse():
+def get_cli_args():
 
     parser = argparse.ArgumentParser(
         description='Compares two configuration files and shows a difference.')
@@ -10,7 +10,7 @@ def make_cli_parse():
     parser.add_argument('second_file', type=str)
 
     parser.add_argument('-f', '--format',
-                        choices=['stylish', 'plain'],
+                        choices=['stylish', 'plain', 'json'],
                         default='stylish',
                         type=str,
                         help='set format of output')

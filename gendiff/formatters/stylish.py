@@ -6,7 +6,7 @@ PREFIXES = ('+ ', '- ', '  ')
 PREFIX_LENGTH = 2
 
 
-def make_stylish(dict_to_style, replacer=' ', spaces_count=4):
+def make_stylish(dict_to_style: dict, replacer=' ', spaces_count=4):
 
     def walk(data, depth=0):
         if not isinstance(data, dict):

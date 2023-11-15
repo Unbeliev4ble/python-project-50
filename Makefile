@@ -17,7 +17,7 @@ compare:
 	poetry run gendiff /home/frost/projects/python-project-50/gendiff/tests/fixtures/file1_nested.json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file2_nested.json
 
 compare-plain:
-	poetry run gendiff -f plain /home/frost/projects/python-project-50/gendiff/tests/fixtures/file1_nested.json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file2_nested.json
+	poetry run gendiff -f json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file1_nested.json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file2_nested.json
 
 test:
 	cd gendiff/tests && poetry run pytest

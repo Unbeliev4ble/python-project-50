@@ -6,7 +6,7 @@ PREFIX_LENGTH = 2
 # FILE2_JSON_PATH = '../tests/fixtures/file2_nested.json'
 
 
-def make_plain(data, path=''):
+def make_plain(data: dict, path=''):
     lines = []
     for key, value in data.items():
         orig_key = key[PREFIX_LENGTH:]
