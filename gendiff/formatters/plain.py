@@ -2,11 +2,11 @@ from gendiff.formatters.value_foramatters import format_value_plain
 
 PREFIX_LENGTH = 2
 
-# FILE1_JSON_PATH = '../tests/fixtures/file1_nested.json'
-# FILE2_JSON_PATH = '../tests/fixtures/file2_nested.json'
+# FILE1_JSON_PATH = '../tests/fixtures/HEX1Y.yml'
+# FILE2_JSON_PATH = '../tests/fixtures/HEX2Y.yml'
 
 
-def make_plain(data: dict, path=''):
+def make_plain(data: dict, path=""):
     lines = []
     for key, value in data.items():
         orig_key = key[PREFIX_LENGTH:]
@@ -23,4 +23,4 @@ def make_plain(data: dict, path=''):
         elif isinstance(value, dict):  # словарь
             current_path = path + key + '.'
             lines.append(f'{make_plain(value, current_path)}')
-    return '\n'.join(lines)
+    return '\n'.join([line for line in lines if line])

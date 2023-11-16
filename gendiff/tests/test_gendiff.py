@@ -23,7 +23,7 @@ def test_generate_diff_stylish():
 
 
 def test_generate_diff_plain():
-    assert (generate_diff(FILE1_JSON_PATH, FILE2_YAML_PATH, 'plain')
+    assert (generate_diff(FILE1_YAML_PATH, FILE2_YAML_PATH, 'plain')
             == PLAIN_EXPECTED_RESULT)
 
 

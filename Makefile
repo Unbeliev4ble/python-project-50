@@ -25,3 +25,8 @@ test:
 test-coverage:
 	cd gendiff/tests &&	poetry run pytest --cov=gendiff  --cov-report xml
 
+hexy:
+	poetry run gendiff -f plain /home/frost/PycharmProjects/HEXS/file1.yml /home/frost/PycharmProjects/HEXS/file2.yml
+
+
+
