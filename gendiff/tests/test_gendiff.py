@@ -22,3 +22,7 @@ FILE2_YAML_PATH = get_path('file2_nested.yaml')
 STYLISH_EXPECTED_RESULT = read_file(get_path('stylish_result.txt'))
 PLAIN_EXPECTED_RESULT = read_file(get_path('plain_result.txt'))
 JSON_EXPECTED_RESULT = read_file(get_path('json_result.txt'))
+
+
+def testa():
+    assert 'a' == 'a'
