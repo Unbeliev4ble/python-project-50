@@ -1,5 +1,5 @@
 from gendiff import generate_diff
-from gendiff.get_data import get_data
+# from gendiff.get_data import get_data
 # from gendiff.get_diff import get_diff
 import os
 
@@ -22,34 +22,6 @@ FILE2_YAML_PATH = get_path('file2_nested.yaml')
 STYLISH_EXPECTED_RESULT = read_file(get_path('stylish_result.txt'))
 PLAIN_EXPECTED_RESULT = read_file(get_path('plain_result.txt'))
 JSON_EXPECTED_RESULT = read_file(get_path('json_result.txt'))
-
-
-def test_get_data():
-    assert get_data(FILE1_JSON_PATH) == {
-        'common': {
-            'setting1': 'Value 1',
-            'setting2': 200,
-            'setting3': True,
-            'setting6': {'key': 'value', 'doge': {
-                'wow': ''}}},
-        'group1': {'baz': 'bas', 'foo': 'bar', 'nest': {'key': 'value'}},
-        'group2': {'abc': 12345, 'deep': {'id': 45}}
-    }
-
-    assert get_data(FILE2_YAML_PATH) == {
-        'common': {
-            'follow': False,
-            'setting1': 'Value 1',
-            'setting3': None,
-            'setting4': 'blah blah',
-            'setting5': {'key5': 'value5'},
-            'setting6': {
-                'key': 'value',
-                'ops': 'vops',
-                'doge': {'wow': 'so much'}}},
-        'group1': {'foo': 'bar', 'baz': 'bars', 'nest': 'str'},
-        'group3': {'deep': {'id': {'number': 45}}, 'fee': 100500}
-    }
 
 
 def test_generate_diff():

@@ -20,10 +20,10 @@ compare-plain:
 	poetry run gendiff -f json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file1_nested.json /home/frost/projects/python-project-50/gendiff/tests/fixtures/file2_nested.json
 
 test:
-	cd gendiff/tests && poetry run pytest
+	poetry run pytest
 
 test-coverage:
-	cd gendiff/tests &&	poetry run pytest --cov=gendiff  --cov-report xml
+	poetry run pytest --cov=gendiff  --cov-report xml
 
 hexy:
 	poetry run gendiff -f plain /home/frost/PycharmProjects/HEXS/file1.yml /home/frost/PycharmProjects/HEXS/file2.yml
