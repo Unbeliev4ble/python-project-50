@@ -1,4 +1,4 @@
-from gendiff import generate_diff
+# from gendiff import generate_diff
 # from gendiff.get_data import get_data
 # from gendiff.get_diff import get_diff
 import os
@@ -22,6 +22,3 @@ FILE2_YAML_PATH = get_path('file2_nested.yaml')
 STYLISH_EXPECTED_RESULT = read_file(get_path('stylish_result.txt'))
 PLAIN_EXPECTED_RESULT = read_file(get_path('plain_result.txt'))
 JSON_EXPECTED_RESULT = read_file(get_path('json_result.txt'))
-
-def add():
-    assert 2+2 ==4
