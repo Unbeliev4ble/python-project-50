@@ -1,14 +1,13 @@
 def format_value_plain(value):
     if not isinstance(value, dict):
         if value is None:
-            result_value = 'null'
+            return 'null'
         elif isinstance(value, str):
-            result_value = f"'{value}'"
+            return f"'{value}'"
         else:
-            result_value = str(value).lower()
+            return str(value).lower()
     else:
-        result_value = '[complex value]'
-    return result_value
+        return '[complex value]'
 
 
 def format_value_stylish(value):

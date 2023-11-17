@@ -3,9 +3,16 @@ name = "hexlet-code"
 version = "0.1.0"
 description = ""
 authors = ["Andrey Volkov <andrew.unbelievable@yandex.ru>"]
+repository = 'https://github.com/Unbeliev4ble/python-project-50'
 readme = "README.md"
 packages = [
     {include = "gendiff"},
+]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Framework :: Flake8",
+    "Framework :: Pytest",
+    "Natural Language :: English",
 ]
 
 [tool.poetry.scripts]

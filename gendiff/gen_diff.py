@@ -15,11 +15,3 @@ def generate_diff(file1_path, file2_path, format='stylish'):
         return make_plain(diff_dict)
     elif format == 'json':
         return make_json(diff_dict)
-
-# print(generate_diff('./tests/fixtures/HEX1Y.yml',
-# './tests/fixtures/HEX1Y.yml', 'plain'))
-# d1 = (get_data('./tests/fixtures/HEX1Y.yml'))
-# d2 = (get_data('./tests/fixtures/HEX2Y.yml'))
-# d = (get_diff(d1, d2))
-#
-# print(make_plain(d))
