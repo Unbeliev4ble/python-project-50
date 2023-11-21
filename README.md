@@ -44,7 +44,7 @@ you can get help by typing
 
 
 
-### Asciinema demonstarations
+### Asciinema demonstarations:
 1. Comparing plain.json files. Stylish output format.
 [![asciicast](https://asciinema.org/a/d2ltyMMZVjHWAvyvNdsdU3Rnv.svg)](https://asciinema.org/a/d2ltyMMZVjHWAvyvNdsdU3Rnv)
 2. Comparing nested.json and .yaml files. Stylish output format.
