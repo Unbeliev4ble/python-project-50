@@ -1,4 +1,5 @@
 from gendiff import generate_diff
+import pytest
 import os
 
 
@@ -21,18 +22,14 @@ PLAIN_EXPECTED_RESULT = read_file(get_path('plain_result.txt'))
 JSON_EXPECTED_RESULT = read_file(get_path('json_result.txt'))
 
 
-def test_generate_diff():
-
-    json_files_stylish = generate_diff(FILE1_JSON_PATH, FILE2_JSON_PATH)
-    yaml_files_stylish = generate_diff(FILE1_YAML_PATH, FILE2_YAML_PATH)
-    json_files_plain = generate_diff(FILE1_JSON_PATH, FILE2_JSON_PATH, 'plain')
-    yaml_files_plain = generate_diff(FILE1_YAML_PATH, FILE2_YAML_PATH, 'plain')
-    json_files_json = generate_diff(FILE1_JSON_PATH, FILE2_JSON_PATH, 'json')
-    yaml_files_json = generate_diff(FILE1_YAML_PATH, FILE2_YAML_PATH, 'json')
-
-    assert json_files_stylish == STYLISH_EXPECTED_RESULT
-    assert yaml_files_stylish == STYLISH_EXPECTED_RESULT
-    assert yaml_files_plain == PLAIN_EXPECTED_RESULT
-    assert json_files_plain == PLAIN_EXPECTED_RESULT
-    assert json_files_json == JSON_EXPECTED_RESULT
-    assert yaml_files_json == JSON_EXPECTED_RESULT
+@pytest.mark.parametrize('gen_diff, result',
+                         [
+                             (generate_diff(FILE1_JSON_PATH, FILE2_JSON_PATH), STYLISH_EXPECTED_RESULT),
+                             (generate_diff(FILE1_YAML_PATH, FILE2_YAML_PATH), STYLISH_EXPECTED_RESULT),
+                             (generate_diff(FILE1_JSON_PATH, FILE2_JSON_PATH, 'plain'), PLAIN_EXPECTED_RESULT),
+                             (generate_diff(FILE1_YAML_PATH, FILE2_YAML_PATH, 'plain'), PLAIN_EXPECTED_RESULT),
+                             (generate_diff(FILE1_JSON_PATH, FILE2_JSON_PATH, 'json'), JSON_EXPECTED_RESULT),
+                             (generate_diff(FILE1_YAML_PATH, FILE2_YAML_PATH, 'json'), JSON_EXPECTED_RESULT),
+                         ])
+def test_generation_diff(gen_diff, result):
+    assert gen_diff == result
