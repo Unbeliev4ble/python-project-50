@@ -36,7 +36,7 @@ Before installing the package make sure you have [Python 3.10](https://www.pytho
 
 `gendiff [-f --format] file_path1 file_path2`
 
-you can get help by typing
+You can get help by typing
 `gendiff -h`
 
 

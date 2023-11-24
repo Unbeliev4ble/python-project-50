@@ -1,4 +1,5 @@
 from gendiff import generate_diff
+from gendiff.parser import read
 import pytest
 import os
 
@@ -8,18 +9,14 @@ def get_path(file_name: str) -> str:
     return os.path.join(current_dir, 'fixtures', file_name)
 
 
-def read_file(path: str):
-    return open(path).read()
-
-
 FILE1_JSON_PATH = get_path('file1_nested.json')
 FILE2_JSON_PATH = get_path('file2_nested.json')
 FILE1_YAML_PATH = get_path('file1_nested.yaml')
 FILE2_YAML_PATH = get_path('file2_nested.yaml')
 
-STYLISH_EXPECTED_RESULT = read_file(get_path('stylish_result.txt'))
-PLAIN_EXPECTED_RESULT = read_file(get_path('plain_result.txt'))
-JSON_EXPECTED_RESULT = read_file(get_path('json_result.txt'))
+STYLISH_EXPECTED_RESULT = read(get_path('stylish_result.txt'))
+PLAIN_EXPECTED_RESULT = read(get_path('plain_result.txt'))
+JSON_EXPECTED_RESULT = read(get_path('json_result.txt'))
 
 
 @pytest.mark.parametrize('gen_diff, result',
