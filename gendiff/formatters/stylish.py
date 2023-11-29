@@ -27,7 +27,7 @@ def make_stylish(dict_to_style: dict, replacer=' ', space_counts=2):  # noqa
 
     def walk(data, depth=0):
         indent = replacer * space_counts * (depth + 1)
-        indent_for_changed = indent * 2
+        indent_for_changed = indent * space_counts
         lines = []
         for k, v in data.items():
             if v['vertex_type'] == 'nested':
