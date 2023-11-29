@@ -1,38 +1,50 @@
 import itertools
-from gendiff.formatters.value_foramatters import format_value_stylish
-
-POSTFIXES = {" (unchanged)": "  ",
-             " ( removed )": "- ",
-             " (  added  )": "+ ",
-             }
-POSTFIX_LENGTH = 12
-PREFIX_LENGTH = 2
 
 
-def style_key(key: str):
-    postfix = key[-POSTFIX_LENGTH:]
-    prefix = POSTFIXES[postfix]
-    orig_key = key[:-POSTFIX_LENGTH]
-    new_key = f'{prefix}{orig_key}'
-    return new_key
+def format_value_stylish(value, depth, replacer=' ', space_counts=4):
+    if isinstance(value, dict):
+        line = []
+        for k, v in value.items():
+            indent = replacer * space_counts * (depth + 1)
+            line.append(f'\n{indent}{k}: {format_value_stylish(v, depth + 1)}')
+        result = itertools.chain('{', line, '\n', ['    ' * depth, '}'])
+        return ''.join(result)
+    else:
+        if value is None:
+            return 'null'
+        elif isinstance(value, bool):
+            return str(value).lower()
+        return str(value)
 
 
-def make_stylish(dict_to_style: dict, replacer=' ', spaces_count=4):
+def build_line(data, key, depth, prefix='  '):
+    line = (f'{"  "  * depth}{prefix}{data["key"]}:'
+            f' {format_value_stylish(data[key], depth + 1)}')
+    return line
+
+
+def make_stylish(dict_to_style: dict, replacer=' ', space_counts=2):  # noqa
+
     def walk(data, depth=0):
-        if not isinstance(data, dict):
-            return format_value_stylish(data)
-        indent_size = depth + spaces_count
-        indent = replacer * indent_size
-        ident_for_changed = replacer * (indent_size - PREFIX_LENGTH)
-        bracket_indent = replacer * depth
+        indent = replacer * space_counts * (depth + 1)
+        indent_for_changed = indent * 2
         lines = []
         for k, v in data.items():
-            if k.endswith(tuple(POSTFIXES)):
-                lines.append(f'{ident_for_changed}'
-                             f'{style_key(k)}: {walk(v, indent_size)}')
-            else:
-                lines.append(f'{indent}{k}: {walk(v, indent_size)}')
-        result = itertools.chain("{", lines, [bracket_indent + "}"])
+            if v['vertex_type'] == 'nested':
+                lines.append(f'{indent_for_changed}'
+                             f'{k}: {walk(v["value"], depth + 1)}')
+            elif v['vertex_type'] == 'unchanged':
+                lines.append(f'{indent}{build_line(v, "value", depth)}')
+            elif v['vertex_type'] == 'changed':
+                lines.append(f'{indent}'
+                             f'{build_line(v, "value_old", depth, "- ")}')
+                lines.append(f'{indent}'
+                             f'{build_line(v, "value_new", depth, "+ ")}')
+            elif v['vertex_type'] == 'added':
+                lines.append(f'{indent}{build_line(v, "value", depth, "+ ")}')
+            elif v['vertex_type'] == 'removed':
+                lines.append(f'{indent}{build_line(v, "value", depth, "- ")}')
+        result = itertools.chain("{", lines, ['    ' * depth + "}"])
         return '\n'.join(result)
 
     return walk(dict_to_style, 0)

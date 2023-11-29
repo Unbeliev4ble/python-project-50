@@ -11,8 +11,8 @@ def get_file_format(file_name):
     return file_name.split('.')[-1]
 
 
-def parse(data, format) -> dict:
-    if format == 'json':
+def parse(data, orig_format) -> dict:
+    if orig_format == 'json':
         return json.loads(data)
-    elif format in ('yaml', 'yml'):
+    elif orig_format in ('yaml', 'yml'):
         return yaml.safe_load(data)

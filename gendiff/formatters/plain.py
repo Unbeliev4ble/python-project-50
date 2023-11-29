@@ -1,24 +1,30 @@
-from gendiff.formatters.value_foramatters import format_value_plain
-
-POSTFIX_LENGTH = 12
+def format_value_plain(value):
+    if not isinstance(value, dict):
+        if value is None:
+            return 'null'
+        elif isinstance(value, str):
+            return f"'{value}'"
+        else:
+            return str(value).lower()
+    else:
+        return '[complex value]'
 
 
 def make_plain(data: dict, path=""):
     lines = []
-    for key, value in data.items():
-        orig_key = key[:-POSTFIX_LENGTH]
-        current_value = format_value_plain(value)
-        if key.endswith(' ( removed )') and f'{orig_key} (  added  )' in data:
-            changed_value = format_value_plain(data[f'{orig_key} (  added  )'])
-            lines.append(f"Property '{path}{orig_key}' was updated. "
-                         f"From {current_value} to {changed_value}")
-        elif key.endswith(' ( removed )'):
-            lines.append(f"Property '{path}{orig_key}' was removed")
-        elif (key.endswith(' (  added  )')
-              and f'{orig_key} ( removed )' not in data):
-            lines.append(f"Property '{path}{orig_key}' "
-                         f"was added with value: {current_value}")
-        elif isinstance(value, dict):
-            current_path = path + key + '.'
-            lines.append(f'{make_plain(value, current_path)}')
-    return '\n'.join([line for line in lines if line])
+    for k, v in data.items():
+        current_path = path + v['key'] + '.'
+        if v['vertex_type'] == 'nested':
+            lines.append(f'{make_plain(v["value"], current_path)}')
+        elif v['vertex_type'] == 'changed':
+            lines.append(f"Property '{path}{k}' was updated. "
+                         f"From {format_value_plain(v['value_old'])}"
+                         f" to {format_value_plain(v['value_new'])}")
+        if v['vertex_type'] == 'added':
+            lines.append(f"Property '{path}{k}'"
+                         f" was added with value:"
+                         f" {format_value_plain(v['value'])}")
+        elif v['vertex_type'] == 'removed':
+            lines.append(f"Property '{path}{k}' was removed")
+
+    return '\n'.join(lines)
